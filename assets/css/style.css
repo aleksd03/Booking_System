@@ -236,6 +236,250 @@ table tr:hover {
     background-color: #f5f5f5;
 }
 
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.resource-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.resource-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+}
+
+.resource-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+}
+
+.resource-category {
+    background-color: rgba(255,255,255,0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.resource-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.resource-description {
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.resource-details {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.detail-item {
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.resource-price {
+    font-size: 1.1rem;
+    color: #27ae60;
+}
+
+.resource-footer {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+}
+
+/* Reservations List */
+.reservations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.reservation-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.reservation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.reservation-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.reservation-category {
+    background-color: rgba(255,255,255,0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-confirmed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-completed {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.reservation-body {
+    padding: 1.5rem;
+}
+
+.reservation-details {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.detail-row {
+    margin-bottom: 0.8rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.reservation-footer {
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+}
+
+/* Tab Buttons */
+.tab-btn {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    color: #3498db;
+}
+
+.tab-btn.active {
+    border-bottom-color: #3498db;
+    color: #3498db;
+}
+
+/* Page Title */
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* Tabs Container */
+.tabs-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Alert Center */
+.alert-center {
+    text-align: center;
+}
+
+/* Button Margin Top */
+.btn-margin-top {
+    margin-top: 1rem;
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    width: 100%;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Tab Hidden */
+.tab-hidden {
+    display: none;
+}
+
+/* Reservation Card States */
+.reservation-card-past {
+    opacity: 0.8;
+}
+
+.reservation-card-cancelled {
+    opacity: 0.6;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar .container {

@@ -54,18 +54,18 @@ session_start();
         </section>
 
         <section class="features">
-            <div class="feature-card">
+            <a href="pages/reservations.php?category=1" class="feature-card" style="text-decoration: none; color: inherit;">
                 <h3>🏢 Конферентни зали</h3>
                 <p>Резервирайте зала за вашето събитие</p>
-            </div>
-            <div class="feature-card">
-                <h3>⚽ Спортни съоръжения</h3>
-                <p>Тенис кортове, фитнес и още</p>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="pages/reservations.php?category=3" class="feature-card" style="text-decoration: none; color: inherit;">
                 <h3>💻 Оборудване</h3>
                 <p>Лаптопи, проектори, камери</p>
-            </div>
+            </a>
+            <a href="pages/reservations.php?category=2" class="feature-card" style="text-decoration: none; color: inherit;">
+                <h3>⚽ Спортни съоръжения</h3>
+                <p>Тенис кортове, фитнес и още</p>
+            </a>
         </section>
     </main>
 
