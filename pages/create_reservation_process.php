@@ -41,6 +41,22 @@ if (empty($reservation_date)) {
     }
 }
 
+// Check if reservation is at least 3 hours in the future
+if (!empty($reservation_date) && !empty($start_time)) {
+    // Combine date and time
+    $reservation_datetime_str = $reservation_date . ' ' . $start_time . ':00';
+    $reservation_timestamp = strtotime($reservation_datetime_str);
+    $current_timestamp = time();
+    $min_required_timestamp = $current_timestamp + (3 * 60 * 60); // +3 hours
+    
+    $time_diff_hours = ($reservation_timestamp - $current_timestamp) / 3600;
+    
+    if ($reservation_timestamp <= $min_required_timestamp) {
+        $hours_left = round($time_diff_hours, 1);
+        $errors[] = "Резервацията трябва да бъде поне 3 часа в бъдещето. Вие сте избрали време след само {$hours_left} час/а от сега.";
+    }
+}
+
 // Validate times
 if (empty($start_time)) {
     $errors[] = "Началният час е задължителен";

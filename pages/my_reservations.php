@@ -51,7 +51,7 @@ $now = new DateTime();
 
 foreach ($reservations as $reservation) {
     $start_date = new DateTime($reservation['start_datetime']);
-    
+
     if ($reservation['status'] === 'cancelled') {
         $cancelled[] = $reservation;
     } elseif ($start_date > $now) {
@@ -63,17 +63,21 @@ foreach ($reservations as $reservation) {
 ?>
 <!DOCTYPE html>
 <html lang="bg">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Моите резервации - ADBook</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="../index.php" class="logo-link"><h1>ADBook</h1></a>
+                <a href="../index.php" class="logo-link">
+                    <h1>ADBook</h1>
+                </a>
                 <ul class="nav-menu">
                     <li><a href="../index.php">Начало</a></li>
                     <li><a href="reservations.php">Резервации</a></li>
@@ -89,14 +93,14 @@ foreach ($reservations as $reservation) {
 
     <main class="container">
         <h2 class="page-title">Моите резервации</h2>
-        
+
         <?php
         // Display messages
         if (isset($_SESSION['success_message'])) {
             echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['success_message']) . '</div>';
             unset($_SESSION['success_message']);
         }
-        
+
         if (isset($_SESSION['error_message'])) {
             echo '<div class="alert alert-error">' . htmlspecialchars($_SESSION['error_message']) . '</div>';
             unset($_SESSION['error_message']);
@@ -130,7 +134,9 @@ foreach ($reservations as $reservation) {
                         $start = new DateTime($reservation['start_datetime']);
                         $end = new DateTime($reservation['end_datetime']);
                         $duration = $start->diff($end);
-                        $hours = $duration->h + ($duration->days * 24);
+
+                        // Calculate total minutes
+                        $total_minutes = ($duration->h * 60) + $duration->i + ($duration->days * 24 * 60);
                         ?>
                         <div class="reservation-card">
                             <div class="reservation-header">
@@ -150,31 +156,47 @@ foreach ($reservations as $reservation) {
                                     ?>
                                 </span>
                             </div>
-                            
+
                             <div class="reservation-body">
                                 <div class="reservation-details">
                                     <div class="detail-row">
-                                        <strong>📅 Дата:</strong> 
+                                        <strong>📅 Дата:</strong>
                                         <?php echo $start->format('d.m.Y') . ' (' . $days_bg[$start->format('l')] . ')'; ?>
                                     </div>
                                     <div class="detail-row">
-                                        <strong>🕐 Време:</strong> 
-                                        <?php echo $start->format('H:i'); ?> - <?php echo $end->format('H:i'); ?> 
-                                        (<?php echo $hours; ?> час<?php echo $hours == 1 ? '' : 'а'; ?>)
+                                        <strong>🕐 Време:</strong>
+                                        <?php
+                                        echo $start->format('H:i') . ' - ' . $end->format('H:i') . ' (';
+
+                                        if ($total_minutes >= 60) {
+                                            $display_hours = floor($total_minutes / 60);
+                                            $display_minutes = $total_minutes % 60;
+
+                                            echo $display_hours . ' час' . ($display_hours == 1 ? '' : 'а');
+
+                                            if ($display_minutes > 0) {
+                                                echo ' и ' . $display_minutes . ' минут' . ($display_minutes == 1 ? 'а' : 'и');
+                                            }
+                                        } else {
+                                            echo $total_minutes . ' минут' . ($total_minutes == 1 ? 'а' : 'и');
+                                        }
+
+                                        echo ')';
+                                        ?>
                                     </div>
                                     <div class="detail-row">
-                                        <strong>💰 Цена:</strong> 
+                                        <strong>💰 Цена:</strong>
                                         <?php echo number_format($reservation['total_price'], 2); ?> лв
                                     </div>
                                     <?php if (!empty($reservation['notes'])): ?>
                                         <div class="detail-row">
-                                            <strong>📝 Бележки:</strong> 
+                                            <strong>📝 Бележки:</strong>
                                             <?php echo htmlspecialchars($reservation['notes']); ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            
+
                             <div class="reservation-footer">
                                 <?php if ($reservation['status'] !== 'cancelled'): ?>
                                     <button onclick="cancelReservation(<?php echo $reservation['id']; ?>)" class="btn btn-danger">
@@ -201,7 +223,9 @@ foreach ($reservations as $reservation) {
                         $start = new DateTime($reservation['start_datetime']);
                         $end = new DateTime($reservation['end_datetime']);
                         $duration = $start->diff($end);
-                        $hours = $duration->h + ($duration->days * 24);
+
+                        // Calculate total minutes
+                        $total_minutes = ($duration->h * 60) + $duration->i + ($duration->days * 24 * 60);
                         ?>
                         <div class="reservation-card reservation-card-past">
                             <div class="reservation-header">
@@ -211,19 +235,36 @@ foreach ($reservations as $reservation) {
                                 </div>
                                 <span class="status-badge status-completed">Завършена</span>
                             </div>
-                            
+
                             <div class="reservation-body">
                                 <div class="reservation-details">
                                     <div class="detail-row">
-                                        <strong>📅 Дата:</strong> 
+                                        <strong>📅 Дата:</strong>
                                         <?php echo $start->format('d.m.Y') . ' (' . $days_bg[$start->format('l')] . ')'; ?>
                                     </div>
                                     <div class="detail-row">
-                                        <strong>🕐 Време:</strong> 
-                                        <?php echo $start->format('H:i'); ?> - <?php echo $end->format('H:i'); ?>
+                                        <strong>🕐 Време:</strong>
+                                        <?php
+                                        echo $start->format('H:i') . ' - ' . $end->format('H:i') . ' (';
+
+                                        if ($total_minutes >= 60) {
+                                            $display_hours = floor($total_minutes / 60);
+                                            $display_minutes = $total_minutes % 60;
+
+                                            echo $display_hours . ' час' . ($display_hours == 1 ? '' : 'а');
+
+                                            if ($display_minutes > 0) {
+                                                echo ' и ' . $display_minutes . ' минут' . ($display_minutes == 1 ? 'а' : 'и');
+                                            }
+                                        } else {
+                                            echo $total_minutes . ' минут' . ($total_minutes == 1 ? 'а' : 'и');
+                                        }
+
+                                        echo ')';
+                                        ?>
                                     </div>
                                     <div class="detail-row">
-                                        <strong>💰 Цена:</strong> 
+                                        <strong>💰 Цена:</strong>
                                         <?php echo number_format($reservation['total_price'], 2); ?> лв
                                     </div>
                                 </div>
@@ -246,6 +287,10 @@ foreach ($reservations as $reservation) {
                         <?php
                         $start = new DateTime($reservation['start_datetime']);
                         $end = new DateTime($reservation['end_datetime']);
+                        $duration = $start->diff($end);
+
+                        // Calculate total minutes
+                        $total_minutes = ($duration->h * 60) + $duration->i + ($duration->days * 24 * 60);
                         ?>
                         <div class="reservation-card reservation-card-cancelled">
                             <div class="reservation-header">
@@ -255,16 +300,33 @@ foreach ($reservations as $reservation) {
                                 </div>
                                 <span class="status-badge status-cancelled">Отказана</span>
                             </div>
-                            
+
                             <div class="reservation-body">
                                 <div class="reservation-details">
                                     <div class="detail-row">
-                                        <strong>📅 Дата:</strong> 
+                                        <strong>📅 Дата:</strong>
                                         <?php echo $start->format('d.m.Y') . ' (' . $days_bg[$start->format('l')] . ')'; ?>
                                     </div>
                                     <div class="detail-row">
-                                        <strong>🕐 Време:</strong> 
-                                        <?php echo $start->format('H:i'); ?> - <?php echo $end->format('H:i'); ?>
+                                        <strong>🕐 Време:</strong>
+                                        <?php
+                                        echo $start->format('H:i') . ' - ' . $end->format('H:i') . ' (';
+
+                                        if ($total_minutes >= 60) {
+                                            $display_hours = floor($total_minutes / 60);
+                                            $display_minutes = $total_minutes % 60;
+
+                                            echo $display_hours . ' час' . ($display_hours == 1 ? '' : 'а');
+
+                                            if ($display_minutes > 0) {
+                                                echo ' и ' . $display_minutes . ' минут' . ($display_minutes == 1 ? 'а' : 'и');
+                                            }
+                                        } else {
+                                            echo $total_minutes . ' минут' . ($total_minutes == 1 ? 'а' : 'и');
+                                        }
+
+                                        echo ')';
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -288,15 +350,15 @@ foreach ($reservations as $reservation) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('tab-hidden');
             });
-            
+
             // Remove active class from all buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Show selected tab
             document.getElementById(tabName + '-tab').classList.remove('tab-hidden');
-            
+
             // Add active class to clicked button
             event.target.classList.add('active');
         }
