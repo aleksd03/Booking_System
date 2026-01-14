@@ -13,7 +13,7 @@ session_start();
     <header>
         <nav class="navbar">
             <div class="container">
-                <h1>ADBook</h1>
+                <a href="index.php" class="logo-link"><h1>ADBook</h1></a>
                 <ul class="nav-menu">
                     <li><a href="index.php">Начало</a></li>
                     <li><a href="pages/reservations.php">Резервации</a></li>

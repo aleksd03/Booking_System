@@ -13,7 +13,7 @@ session_start();
     <header>
         <nav class="navbar">
             <div class="container">
-                <h1>ADBook</h1>
+                <a href="../index.php" class="logo-link"><h1>ADBook</h1></a>
                 <ul class="nav-menu">
                     <li><a href="../index.php">Начало</a></li>
                     <li><a href="reservations.php">Резервации</a></li>
@@ -58,6 +58,10 @@ session_start();
 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Вход</button>
             </form>
+
+            <p style="text-align: center; margin-top: 1rem;">
+                <a href="forgot_password.php" style="color: #3498db; font-size: 0.9rem;">Забравена парола?</a>
+            </p>
 
             <p style="text-align: center; margin-top: 1rem;">
                 Нямате акаунт? <a href="register.php" style="color: #3498db;">Регистрирайте се тук</a>

@@ -37,6 +37,16 @@ body {
     color: #3498db;
 }
 
+.navbar .logo-link {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+}
+
+.navbar .logo-link:hover {
+    opacity: 0.8;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
