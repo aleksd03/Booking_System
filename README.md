@@ -1,139 +1,175 @@
-# 📅 ADBook - Resource Reservation Platform
+# ADBook - Resource Booking System
 
-## 📖 Description / Описание
+A comprehensive web-based resource booking system built with PHP and MySQL. The system allows users to browse and reserve various resources (conference rooms, sports facilities, equipment) while administrators can manage resources, reservations, and users.
 
-**EN:** ADBook is a comprehensive resource booking system for managing conference rooms, sports facilities, and equipment reservations. Built with pure PHP (no frameworks), MySQL, HTML5, CSS3, and JavaScript.
+## 🚀 Features
 
-**BG:** ADBook е система за резервация на ресурси (конферентни зали, спортни съоръжения, оборудване) разработена с PHP, MySQL, HTML, CSS и JavaScript.
+### User Features
+- **User Authentication**: Secure registration and login system
+- **Browse Resources**: View all available resources with filtering by category
+- **Make Reservations**: Book resources with automatic price calculation
+- **My Reservations**: View and manage personal reservations (upcoming, past, cancelled)
+- **Cancel Reservations**: Cancel upcoming reservations
+- **Password Recovery**: Request password reset via admin contact
 
-## 📁 Project Structure / Структура на проекта
+### Admin Features
+- **Dashboard**: Overview with statistics (total reservations, revenue, users, etc.)
+- **Resource Management**: Full CRUD operations for resources
+- **Reservation Management**: View all reservations with advanced filtering
+- **User Management**: View users, change roles, delete users
+- **Real-time Statistics**: Track bookings, revenue, and system usage
 
+### Technical Features
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Form Validation**: Client-side and server-side validation
+- **Conflict Detection**: Prevents overlapping reservations
+- **3-Hour Advance Booking**: Enforces minimum 3-hour advance notice
+- **Session Management**: Secure user sessions with role-based access
+- **Clean Code**: No inline styles, proper MVC-like structure
+
+## 🛠️ Technologies Used
+
+- **Backend**: PHP 8.x
+- **Database**: MySQL 8.0
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Server**: Apache (XAMPP)
+- **Version Control**: Git & GitHub
+
+## 📋 Prerequisites
+
+- XAMPP (or similar LAMP/WAMP stack)
+- PHP 8.0 or higher
+- MySQL 8.0 or higher
+- Web browser (Chrome, Firefox, Safari, Edge)
+
+## 🔧 Installation
+
+### 1. Install XAMPP
+Download and install XAMPP from [https://www.apachefriends.org](https://www.apachefriends.org)
+
+### 2. Clone the Repository
+```bash
+cd C:\xampp\htdocs
+git clone https://github.com/YOUR_USERNAME/booking-system.git
+```
+
+### 3. Create Database
+1. Start XAMPP (Apache and MySQL)
+2. Open phpMyAdmin: `http://localhost/phpmyadmin`
+3. Create a new database named `booking_system`
+4. Import the SQL file: `database_setup.sql`
+
+### 4. Configure Database Connection
+The database configuration is already set in `config/database.php`:
+```php
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'booking_system';
+```
+
+### 5. Access the Application
+Open your browser and navigate to:
+```
+http://localhost/booking-system
+```
+
+## 👤 Default Accounts
+
+### Admin Account
+- **Email**: admin@booking.com
+- **Password**: admin123
+
+### Demo User Account
+- **Email**: demo@test.com
+- **Password**: demo123
+
+## 📂 Project Structure
 ```
 booking-system/
-├── config/              # Конфигурационни файлове
-│   └── database.php     # Настройки за база данни
-├── includes/            # Общи PHP файлове
-├── assets/              # Статични ресурси
-│   ├── css/
-│   │   └── style.css    # Основен CSS файл
-│   ├── js/
-│   │   └── main.js      # Основен JavaScript файл
-│   └── images/          # Изображения
-├── pages/               # Страници на приложението
-│   ├── login.php        # Страница за вход
-│   ├── register.php     # Страница за регистрация
-│   └── reservations.php # Страница с резервации
-├── admin/               # Административен панел
-└── index.php            # Главна страница
+├── admin/                      # Admin panel pages
+│   ├── dashboard.php          # Admin dashboard with statistics
+│   ├── resources.php          # Resource management
+│   ├── all_reservations.php  # All reservations view
+│   └── users.php              # User management
+├── assets/
+│   └── css/
+│       └── style.css          # Main stylesheet
+├── config/
+│   └── database.php           # Database configuration
+├── includes/
+│   └── auth_check.php         # Authentication helper functions
+├── pages/                      # User-facing pages
+│   ├── login.php              # Login page
+│   ├── register.php           # Registration page
+│   ├── reservations.php       # Browse resources
+│   ├── create_reservation.php # Create new reservation
+│   ├── my_reservations.php    # User's reservations
+│   └── logout.php             # Logout handler
+├── index.php                   # Homepage
+├── database_setup.sql          # Database schema and sample data
+└── README.md                   # This file
 ```
 
-## ✨ Features / Функционалности
+## 🗄️ Database Schema
 
-### Completed / Готово:
-- ✅ User registration and authentication
-- ✅ Responsive modern design
-- ✅ MySQL database with relational structure
-- ✅ Resource categorization
-- ✅ Sample data included
+### Tables
+- **users**: User accounts and authentication
+- **categories**: Resource categories (Conference Rooms, Sports, Equipment)
+- **resources**: Available resources for booking
+- **reservations**: Booking records
 
-### Planned / Планирано:
-- ⏳ View available resources
-- ⏳ Create, edit, and delete reservations
-- ⏳ Admin panel for resource management
-- ⏳ Reservation history
-- ⏳ Search and filtering
-- ⏳ Calendar view
+### Key Relationships
+- Users → Reservations (one-to-many)
+- Categories → Resources (one-to-many)
+- Resources → Reservations (one-to-many)
 
-## 🚀 Installation and Setup / Инсталация и настройка
+## 🎨 Design Features
 
-### Requirements / Изисквания:
-- XAMPP (Apache + MySQL + PHP 7.4+)
-- Modern web browser (Chrome, Firefox, Edge)
-- Git (optional, for version control)
+- Modern gradient UI with purple/blue theme
+- Card-based layout for resources
+- Responsive grid system
+- Status badges with color coding
+- Interactive buttons with hover effects
+- Clean typography and spacing
 
-### Installation Steps / Стъпки за инсталация:
+## 🔒 Security Features
 
-1. **Install XAMPP / Инсталирайте XAMPP**
-   ```
-   Download from: https://www.apachefriends.org/
-   ```
+- Password hashing with `password_hash()` and `password_verify()`
+- SQL injection prevention with prepared statements
+- XSS protection with `htmlspecialchars()`
+- Session-based authentication
+- Role-based access control (user/admin)
+- Input validation (client-side and server-side)
 
-2. **Clone or copy the project / Клонирайте или копирайте проекта**
-   ```bash
-   # If using Git
-   git clone <your-repo-url>
-   
-   # Or copy the folder to:
-   # C:\xampp\htdocs\booking-system\
-   ```
+## 📱 Browser Support
 
-3. **Start Apache and MySQL / Стартирайте Apache и MySQL**
-   - Open XAMPP Control Panel
-   - Click "Start" on Apache
-   - Click "Start" on MySQL
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-4. **Create the database / Създайте базата данни**
-   - Open browser: `http://localhost/phpmyadmin`
-   - Create new database: `booking_system`
-   - Import `database_setup.sql` or run it in MySQL Workbench
+## 🐛 Known Limitations
 
-5. **Configure database connection / Конфигурирайте връзката с БД**
-   - Edit `config/database.php` if needed
-   - Default settings:
-     - Host: `localhost`
-     - User: `root`
-     - Password: `` (empty)
-     - Database: `booking_system`
+- Email notifications are simulated (no actual email sending)
+- Single currency support (Euro)
+- No payment gateway integration
+- Basic search functionality
 
-6. **Open the project / Отворете проекта**
-   ```
-   http://localhost/booking-system/
-   ```
+## 🤝 Contributing
 
-## 🔐 Default Admin Credentials / Данни за администратор
+This is a university project. Contributions are not currently accepted.
 
-After running the database setup, you can login with:
-```
-Email: admin@booking.com
-Password: admin123
-```
+## 📄 License
 
-**⚠️ Important:** Change the admin password after first login!
+This project is for educational purposes only.
 
-## 🛠️ Technologies / Технологии
+## 👨‍💻 Author
 
-- **Backend:** PHP (Pure PHP, no frameworks)
-- **Database:** MySQL
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-- **Server:** Apache (XAMPP)
-
-## 📸 Screenshots / Снимки
-
-_Coming soon / Очаквайте скоро_
-
-## 📦 Database Schema / Структура на базата данни
-
-### Tables / Таблици:
-- **users** - User accounts with roles
-- **categories** - Resource categories
-- **resources** - Bookable resources
-- **reservations** - User reservations
-
-## 🤝 Contributing / Принос
-
-This is a university project. Suggestions and feedback are welcome!
-
-## 📄 License / Лиценз
-
-This project is created for educational purposes.
-
-## 👨‍💻 Author / Автор
-
-**ADBook** - University Project - Web Development with PHP  
-Created by aleksd03
+**Aleks Dimitrov**
+- University Project
+- Date: January 2026
 
 ---
 
-**Note:** This project is currently in development. More features coming soon!
-
-**Забележка:** Проектът е в процес на разработка. Очаквайте нови функционалности скоро!
+**Note**: This is a student project created for educational purposes as part of a web development course.

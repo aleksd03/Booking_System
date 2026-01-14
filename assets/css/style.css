@@ -853,6 +853,19 @@ table td strong {
     white-space: nowrap;
 }
 
+/* Page Content Top Spacing - Apply to all pages */
+main.container > *:first-child {
+    margin-top: 2rem;
+}
+
+main.container > .page-title {
+    margin-top: 2rem;
+}
+
+main.container > .admin-page-header {
+    margin-top: 2rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar .container {
