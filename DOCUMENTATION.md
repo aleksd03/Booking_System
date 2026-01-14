@@ -84,15 +84,23 @@ Open your browser and navigate to:
 http://localhost/booking-system
 ```
 
-## 👤 Default Accounts
+## 👤 Setting Up Accounts
 
-### Admin Account
-- **Email**: admin@booking.com
-- **Password**: admin123
+After running `database_reset.sql`, the database will be clean with no users.
 
-### Demo User Account
-- **Email**: demo@test.com
-- **Password**: demo123
+### Creating Admin Account:
+1. Go to: `http://localhost/booking-system`
+2. Register a new account (use your preferred email and password)
+3. In MySQL Workbench, run:
+```sql
+   UPDATE users SET role = 'admin' WHERE id = 1;
+```
+4. Logout and login again - you're now an admin!
+
+### Creating Demo Users:
+- Simply register additional accounts through the registration page
+- They will automatically have the 'user' role
+- Use these for testing reservations and user features
 
 ## 📂 Project Structure
 ```
