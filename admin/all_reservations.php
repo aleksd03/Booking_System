@@ -189,7 +189,7 @@ closeDbConnection($conn);
                                     }
                                     ?>
                                 </td>
-                                <td><strong><?php echo number_format($res['total_price'], 2); ?> лв</strong></td>
+                                <td><strong><?php echo number_format($res['total_price'], 2); ?> €</strong></td>
                                 <td>
                                     <span class="badge badge-<?php echo $res['status']; ?>">
                                         <?php

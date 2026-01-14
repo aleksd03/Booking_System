@@ -115,7 +115,7 @@ closeDbConnection($conn);
             <div class="stat-card stat-card-purple">
                 <div class="stat-icon">💰</div>
                 <div class="stat-content">
-                    <h3><?php echo number_format($total_revenue, 2); ?> лв</h3>
+                    <h3><?php echo number_format($total_revenue, 2); ?> €</h3>
                     <p>Общи приходи</p>
                 </div>
             </div>
@@ -184,7 +184,7 @@ closeDbConnection($conn);
                                 <td><?php echo htmlspecialchars($res['resource_name']); ?></td>
                                 <td><?php echo htmlspecialchars($res['category_name']); ?></td>
                                 <td><?php echo $start->format('d.m.Y H:i'); ?></td>
-                                <td><?php echo number_format($res['total_price'], 2); ?> лв</td>
+                                <td><?php echo number_format($res['total_price'], 2); ?> €</td>
                                 <td>
                                     <span class="badge badge-<?php echo $res['status']; ?>">
                                         <?php

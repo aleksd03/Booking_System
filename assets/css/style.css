@@ -848,6 +848,11 @@ small.helper-text {
     text-decoration: underline;
 }
 
+/* Table Price Cells - No wrap */
+table td strong {
+    white-space: nowrap;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar .container {

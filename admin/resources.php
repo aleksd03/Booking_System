@@ -94,7 +94,7 @@ closeDbConnection($conn);
                                     ?>
                                 </td>
                                 <td><?php echo htmlspecialchars($resource['location']); ?></td>
-                                <td><strong><?php echo number_format($resource['price_per_hour'], 2); ?> лв</strong></td>
+                                <td><strong><?php echo number_format($resource['price_per_hour'], 2); ?> €</strong></td>
                                 <td>
                                     <?php if ($resource['status'] === 'available'): ?>
                                         <span class="badge badge-available">Наличен</span>

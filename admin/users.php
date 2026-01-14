@@ -96,7 +96,7 @@ closeDbConnection($conn);
                                     <?php if ($user['role'] === 'admin'): ?>
                                         <span class="badge badge-admin">👑 Админ</span>
                                     <?php else: ?>
-                                        <span class="badge badge-user">👤 User</span>
+                                        <span class="badge badge-user">👤 Потребител</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -108,9 +108,9 @@ closeDbConnection($conn);
                                 </td>
                                 <td>
                                     <?php if ($user['total_spent'] > 0): ?>
-                                        <strong class="text-success"><?php echo number_format($user['total_spent'], 2); ?> лв</strong>
+                                        <strong class="text-success"><?php echo number_format($user['total_spent'], 2); ?> €</strong>
                                     <?php else: ?>
-                                        <span class="text-muted">0.00 лв</span>
+                                        <span class="text-muted">0.00 €</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -129,7 +129,7 @@ closeDbConnection($conn);
                                             <?php else: ?>
                                                 <button onclick="changeRole(<?php echo $user['id']; ?>, 'user', '<?php echo htmlspecialchars($user['name'], ENT_QUOTES); ?>')" 
                                                         class="btn btn-make-user">
-                                                    👤 Направи user
+                                                    👤 Направи потребител
                                                 </button>
                                             <?php endif; ?>
                                             <button onclick="deleteUser(<?php echo $user['id']; ?>, '<?php echo htmlspecialchars($user['name'], ENT_QUOTES); ?>')" 

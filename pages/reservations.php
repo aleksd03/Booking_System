@@ -123,7 +123,7 @@ require_once '../config/database.php';
                                 <?php endif; ?>
                                 
                                 <div class="detail-item resource-price">
-                                    <strong>💰 Цена:</strong> <?php echo number_format($resource['price_per_hour'], 2); ?> лв/час
+                                    <strong>💰 Цена:</strong> <?php echo number_format($resource['price_per_hour'], 2); ?> €/час
                                 </div>
                             </div>
                         </div>

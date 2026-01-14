@@ -23,6 +23,14 @@ if (empty($name)) {
     $errors[] = "Името е задължително";
 } elseif (strlen($name) < 3) {
     $errors[] = "Името трябва да е поне 3 символа";
+} else {
+    // Check if name contains at least first name and last name
+    $name_parts = explode(' ', trim($name));
+    $name_parts = array_filter($name_parts); // Remove empty elements
+    
+    if (count($name_parts) < 2) {
+        $errors[] = "Моля въведете пълно име (име и фамилия)";
+    }
 }
 
 // Validate email

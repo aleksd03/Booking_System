@@ -186,7 +186,7 @@ foreach ($reservations as $reservation) {
                                     </div>
                                     <div class="detail-row">
                                         <strong>💰 Цена:</strong>
-                                        <?php echo number_format($reservation['total_price'], 2); ?> лв
+                                        <?php echo number_format($reservation['total_price'], 2); ?> €
                                     </div>
                                     <?php if (!empty($reservation['notes'])): ?>
                                         <div class="detail-row">
@@ -265,7 +265,7 @@ foreach ($reservations as $reservation) {
                                     </div>
                                     <div class="detail-row">
                                         <strong>💰 Цена:</strong>
-                                        <?php echo number_format($reservation['total_price'], 2); ?> лв
+                                        <?php echo number_format($reservation['total_price'], 2); ?> €
                                     </div>
                                 </div>
                             </div>

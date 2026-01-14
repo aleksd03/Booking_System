@@ -106,7 +106,7 @@ unset($_SESSION['reservation_data']);
                     <?php endif; ?>
                     
                     <p class="price-highlight">
-                        <strong>💰 Цена:</strong> <?php echo number_format($resource['price_per_hour'], 2); ?> лв/час
+                        <strong>💰 Цена:</strong> <?php echo number_format($resource['price_per_hour'], 2); ?> €/час
                     </p>
                 </div>
             </div>
@@ -150,7 +150,7 @@ unset($_SESSION['reservation_data']);
                         <strong>Продължителност:</strong> <span id="duration">-</span>
                     </p>
                     <p class="price-total">
-                        <strong>Обща цена:</strong> <span id="totalPrice">0.00</span> лв
+                        <strong>Обща цена:</strong> <span id="totalPrice">0.00</span> €
                     </p>
                 </div>
 

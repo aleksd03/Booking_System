@@ -122,7 +122,7 @@ unset($_SESSION['resource_data']);
                     </div>
 
                     <div class="form-group">
-                        <label for="price_per_hour">Цена на час (лв): *</label>
+                        <label for="price_per_hour">Цена на час (€): *</label>
                         <input type="number" id="price_per_hour" name="price_per_hour" 
                                min="0" step="0.01" required
                                value="<?php echo htmlspecialchars($old_data['price_per_hour']); ?>">
