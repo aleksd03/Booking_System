@@ -28,20 +28,39 @@ session_start();
         <div class="form-container">
             <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Регистрация</h2>
             
+            <?php
+            // Display errors if any
+            if (isset($_SESSION['registration_errors'])) {
+                echo '<div class="alert alert-error">';
+                foreach ($_SESSION['registration_errors'] as $error) {
+                    echo '<p>' . htmlspecialchars($error) . '</p>';
+                }
+                echo '</div>';
+                unset($_SESSION['registration_errors']);
+            }
+            
+            // Get old form data if validation failed
+            $old_data = $_SESSION['registration_data'] ?? [];
+            unset($_SESSION['registration_data']);
+            ?>
+            
             <form action="register_process.php" method="POST" id="registerForm">
                 <div class="form-group">
                     <label for="name">Име и фамилия:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required 
+                           value="<?php echo htmlspecialchars($old_data['name'] ?? ''); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Имейл:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required
+                           value="<?php echo htmlspecialchars($old_data['email'] ?? ''); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Телефон:</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" required
+                           value="<?php echo htmlspecialchars($old_data['phone'] ?? ''); ?>">
                 </div>
 
                 <div class="form-group">

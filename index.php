@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="bg">
 <head>
@@ -14,14 +17,36 @@
                 <ul class="nav-menu">
                     <li><a href="index.php">Начало</a></li>
                     <li><a href="pages/reservations.php">Резервации</a></li>
-                    <li><a href="pages/login.php">Вход</a></li>
-                    <li><a href="pages/register.php">Регистрация</a></li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li><a href="pages/my_reservations.php">Моите резервации</a></li>
+                        <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                            <li><a href="admin/dashboard.php">Админ панел</a></li>
+                        <?php endif; ?>
+                        <li><a href="pages/logout.php">Изход (<?php echo htmlspecialchars($_SESSION['user_name']); ?>)</a></li>
+                    <?php else: ?>
+                        <li><a href="pages/login.php">Вход</a></li>
+                        <li><a href="pages/register.php">Регистрация</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main class="container">
+        <?php
+        // Display success message if any
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['success_message']) . '</div>';
+            unset($_SESSION['success_message']);
+        }
+        
+        // Display error message if any
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="alert alert-error">' . htmlspecialchars($_SESSION['error_message']) . '</div>';
+            unset($_SESSION['error_message']);
+        }
+        ?>
+        
         <section class="hero">
             <h2>Добре дошли в системата за резервации</h2>
             <p>Резервирайте лесно и бързо конферентни зали, спортни съоръжения и оборудване</p>

@@ -28,10 +28,27 @@ session_start();
         <div class="form-container">
             <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Вход в системата</h2>
             
+            <?php
+            // Display errors if any
+            if (isset($_SESSION['login_errors'])) {
+                echo '<div class="alert alert-error">';
+                foreach ($_SESSION['login_errors'] as $error) {
+                    echo '<p>' . htmlspecialchars($error) . '</p>';
+                }
+                echo '</div>';
+                unset($_SESSION['login_errors']);
+            }
+            
+            // Get old email if login failed
+            $old_email = $_SESSION['login_email'] ?? '';
+            unset($_SESSION['login_email']);
+            ?>
+            
             <form action="login_process.php" method="POST" id="loginForm">
                 <div class="form-group">
                     <label for="email">Имейл:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required
+                           value="<?php echo htmlspecialchars($old_email); ?>">
                 </div>
 
                 <div class="form-group">

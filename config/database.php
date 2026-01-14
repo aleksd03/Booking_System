@@ -2,7 +2,7 @@
 // Database configuration
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'DeathlyHallows666!');
 define('DB_NAME', 'booking_system');
 
 // Create connection
