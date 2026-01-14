@@ -480,6 +480,374 @@ table tr:hover {
     opacity: 0.6;
 }
 
+/* Admin Dashboard */
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.stat-card-blue .stat-icon {
+    background-color: #e3f2fd;
+}
+
+.stat-card-green .stat-icon {
+    background-color: #e8f5e9;
+}
+
+.stat-card-orange .stat-icon {
+    background-color: #fff3e0;
+}
+
+.stat-card-purple .stat-icon {
+    background-color: #f3e5f5;
+}
+
+.stat-card-teal .stat-icon {
+    background-color: #e0f2f1;
+}
+
+.stat-card-red .stat-icon {
+    background-color: #ffebee;
+}
+
+.stat-content h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.stat-content p {
+    margin: 0.3rem 0 0 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Admin Actions */
+.admin-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.admin-action-btn {
+    display: block;
+    padding: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Table Headers - No wrap */
+table thead th {
+    white-space: nowrap;
+}
+
+/* Admin Page Utilities */
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.admin-page-header .page-title {
+    margin: 0;
+}
+
+.admin-section {
+    margin: 3rem 0;
+}
+
+.admin-section-title {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions > * {
+    flex: 1;
+}
+
+.btn-cancel {
+    background-color: #95a5a6;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container-medium {
+    max-width: 800px;
+}
+
+.form-container-small {
+    max-width: 700px;
+}
+
+/* Filter Buttons */
+.filter-bar {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.filter-bar .btn {
+    margin: 0.5rem;
+}
+
+.btn-filter {
+    background-color: #95a5a6;
+    color: white;
+}
+
+/* Table Action Buttons */
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-edit {
+    background-color: #3498db;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.btn-action {
+    background-color: #95a5a6;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.btn-make-admin {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+.btn-make-user {
+    background-color: #3498db;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+
+/* Status Badges */
+.badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.badge-admin {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.badge-user {
+    background-color: #3498db;
+    color: white;
+}
+
+.badge-available {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-unavailable {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-pending {
+    background-color: #ffc107;
+    color: white;
+}
+
+.badge-confirmed {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-cancelled {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-completed {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Text Utilities */
+.text-muted {
+    color: #777;
+}
+
+.text-small {
+    font-size: 0.85rem;
+}
+
+.text-center-muted {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+}
+
+.text-success {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+/* Table Row Highlight */
+.row-highlight {
+    background-color: #e8f5e9;
+}
+
+/* Small Helper Text */
+small.helper-text {
+    color: #777;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+/* Resource Info Box */
+.resource-info-box {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.resource-info-title {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.resource-info-subtitle {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.price-highlight {
+    color: #27ae60;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* Create Reservation Page */
+.reservation-page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.price-calculation-box {
+    background-color: #e8f5e9;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.price-calculation-box p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.price-calculation-box .price-total {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.3rem;
+    color: #27ae60;
+}
+
+.btn-back {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #95a5a6;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+/* Text Link */
+.text-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .navbar .container {
